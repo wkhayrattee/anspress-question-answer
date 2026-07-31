@@ -525,9 +525,13 @@ class Notifications extends \AnsPress\Singleton {
 	 * Ajax callback for loading more notifications.
 	 */
 	public function load_more_notifications() {
+		if ( ! is_user_logged_in() ) {
+			wp_die();
+		}
+
 		check_admin_referer( 'load_more_notifications', '__nonce' );
 
-		$user_id = ap_sanitize_unslash( 'user_id', 'r' );
+		$user_id = get_current_user_id();
 		$paged   = ap_sanitize_unslash( 'current', 'r', 1 ) + 1;
 
 		ob_start();
