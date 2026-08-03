@@ -218,7 +218,7 @@ function ap_page( $current_page = '' ) {
 		$current_page = '' === $current_page ? 'base' : $current_page;
 	}
 
-	if ( isset( $pages[ $current_page ]['func'] ) ) {
+	if ( isset( $pages[ $current_page ]['func'] ) && ( empty( $pages[ $current_page ]['private'] ) || is_user_logged_in() ) ) {
 		call_user_func( $pages[ $current_page ]['func'] );
 	} else {
 		global $wp_query;
