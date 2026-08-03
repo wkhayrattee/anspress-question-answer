@@ -61,9 +61,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</span>
 				</div>
 
+				<?php if ( ap_user_can_view_post( $activities->get_q_id() ) ) : ?>
 				<div class="ap-activity-ref">
 					<a href="<?php echo esc_url( get_permalink( $activities->get_q_id() ) ); ?>"><?php echo esc_html( get_the_title( $activities->get_q_id() ) ); ?></a>
 				</div>
+				<?php endif; ?>
 
 				<div class="ap-activities-same">
 					<?php $activities->group_start(); ?>

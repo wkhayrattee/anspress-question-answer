@@ -30,6 +30,6 @@ if ( 'answer' === $type && ! empty( $this->object->a_id ) ) {
 
 if ( 'comment' === $type && ap_user_can_read_comment( $this->object->c_id ) ) {
 	echo wp_kses_post( get_comment_excerpt( $this->object->c_id ) ) . '<a href="' . esc_url( ap_get_short_link( array( 'ap_c' => $this->object->c_id ) ) ) . '">' . esc_attr__( 'View comment', 'anspress-question-answer' ) . '</a>';
-} elseif ( ! empty( $post_id ) && ! $this->in_group ) {
+} elseif ( ! empty( $post_id ) && ! $this->in_group && ap_user_can_view_post( $post_id ) ) {
 	echo '<a href="' . esc_url( get_permalink( $post_id ) ) . '">' . esc_html( get_the_title( $post_id ) ) . '</a>';
 }
