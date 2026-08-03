@@ -329,7 +329,7 @@ class AnsPress_Admin {
 		$GLOBALS['wp']->add_query_var( 'post_parent' );
 
 		// Flush_rules if option updated.
-		if ( isset( $_GET['page'] ) && ('anspress_options' === $_GET['page']) && isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { // @codingStandardsIgnoreLine.
+		if ( current_user_can( 'manage_options' ) && isset( $_GET['page'] ) && ('anspress_options' === $_GET['page']) && isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { // @codingStandardsIgnoreLine.
 			$options                   = ap_opt();
 			$page                      = get_page( ap_opt( 'base_page' ) );
 			$options['base_page_slug'] = $page->post_name;
