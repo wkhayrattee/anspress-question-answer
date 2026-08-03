@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/anspress
 Tags: question, answer, q&a, forum, profile
 Requires at least: 4.7
 Tested up to: 6.5
-Stable tag: 4.4.4
+Stable tag: 4.4.5
 Requires PHP: 8.0
 License: GPLv2 or later
 Demo: https://anspress.net/demo/?product=anspress
@@ -100,6 +100,15 @@ Read the full FAQ here https://anspress.net/resources/faq/
 
 
 == Changelog ==
+
+= 4.4.5 =
+
+Security release (maintained independently in this fork; upstream is archived). Fixed 4 Broken Access Control vulnerabilities found in an internal audit prompted by CVE-2026-65554:
+
+* Any Subscriber could overwrite another user's question via the question-edit ajax handler (ownership check was gated behind a dead condition that never ran).
+* Any Subscriber could read another user's private notification feed (IDOR — `load_more_notifications()` trusted a raw request `user_id`).
+* Any Subscriber could trigger an unauthorized admin-settings resave via `admin_init`, which fires before WordPress's own per-page capability check.
+* Any unauthenticated visitor could see the titles and permalinks of private or moderation-queue questions/answers via the Activities feed (missing visibility check, plus a page-privacy flag that was never enforced).
 
 = 4.4.3 =
 
