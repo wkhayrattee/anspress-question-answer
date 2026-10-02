@@ -71,6 +71,6 @@ class Curl {
 	 * @param resource $ch
 	 */
 	public function close( $ch ) {
-		curl_close( $ch );
+		// No-op: curl_close() has had no effect since PHP 8.0 and is deprecated in 8.5.
 	}
 }
