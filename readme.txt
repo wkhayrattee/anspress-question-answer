@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/anspress
 Tags: question, answer, q&a, forum, profile
 Requires at least: 4.7
 Tested up to: 6.5
-Stable tag: 4.4.5
+Stable tag: 4.4.6
 Requires PHP: 8.0
 License: GPLv2 or later
 Demo: https://anspress.net/demo/?product=anspress
@@ -100,6 +100,13 @@ Read the full FAQ here https://anspress.net/resources/faq/
 
 
 == Changelog ==
+
+= 4.4.6 =
+
+PHP 8.5 compatibility release (maintained independently in this fork; upstream is archived). No functional changes; verified on PHP 8.5 with no fatal errors or warnings.
+
+* Fixed a `setcookie()` deprecation notice logged on every request: the session cookie domain defaulted to `null`. It now defaults to `''`, which PHP already used in its place, so the cookie is unchanged.
+* Fixed a PHP 8.5 `curl_close()` deprecation in the bundled reCAPTCHA library. The function has had no effect since PHP 8.0.
 
 = 4.4.5 =
 
