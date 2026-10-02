@@ -44,9 +44,9 @@ class Session {
 	/**
 	 * The cookie domain.
 	 *
-	 * @var string|null
+	 * @var string
 	 */
-	private $cookie_domain = null;
+	private $cookie_domain = '';
 
 	/**
 	 * When will cookie and session will expire.
